@@ -1,7 +1,7 @@
-import { Link, useNavigate  } from 'react-router-dom'
-import './Authentication.css'
-import React from 'react'
-import { useUser } from '../context/useUser'
+import { Link, useNavigate } from 'react-router-dom';
+import './Authentication.css';
+import React from 'react';
+import { useUser } from '../context/useUser.js';
 
 export const AuthenticationMode = Object.freeze({
     Login: 'Login',
@@ -9,21 +9,21 @@ export const AuthenticationMode = Object.freeze({
 })
 
 export default function Authentication({authenticationMode}) {
-    const { user, setUser, signUp, signIn } = useUser()
+    const {user, setUser, signUp, signIn} =  useUser();
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            if (authenticationMode === AuthenticationMode.Register) {
+            if (authenticationMode ===  AuthenticationMode.Register) {
                 await signUp()
                 navigate('/signin')
-            }   else {
+            } else {
                 await signIn()
                 navigate("/")
             }
         } catch(error) {
-            const message = error.response && error.response.data ? error.response.data.error : error
+            const message = error.response && error.response.data ?  error.response.data.error : error;
             alert(message)
         }
     }
@@ -34,11 +34,11 @@ export default function Authentication({authenticationMode}) {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Email</label>
-                    <input type="email" value={user.email} onChange={e => setUser({...user,email: e.target.value})}/>
+                    <input type="email" value={user.email} onChange={e => setUser({...user, email: e.target.value})} />
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type="password" value={user.password} onChange={e => setUser({...user,password: e.target.value})} />
+                    <input type="password" value={user.password} onChange={e => setUser({...user, password: e.target.value})} />
                 </div>
                 <div>
                     <button>{authenticationMode === AuthenticationMode.Login ? 'Login' : 'Submit'}</button>

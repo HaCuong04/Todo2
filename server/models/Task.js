@@ -5,7 +5,11 @@ const selectAllTasks = async () => {
 }
 
 const insertTask = async (description) => {
-    return await pool.query('insert into task (description) values ($1) returning *', [description])
+    return await pool.query('INSERT INTO task (description) VALUES ($1) RETURNING *', [description]);
 }
 
-export { selectAllTasks, insertTask }
+const removeTask = async (id) => {
+    return await pool.query('DELETE FROM task WHERE id = $1', [id])
+}
+
+export { selectAllTasks, insertTask, removeTask }

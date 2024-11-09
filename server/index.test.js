@@ -37,9 +37,9 @@ describe('POST Tasks',() => {
             body: JSON.stringify({'description':'Task from unit test'})
         })
         const data = await response.json()
-        expect(response.status).to.equal(500)
+        expect(response.status).to.equal(201)
         expect(data).to.be.an('object')
-        expect(data).to.include.all.keys(/*'id'*/'error')
+        expect(data).to.include.all.keys('id')
     })
 
     it ('should not post a task without description', async() => {
@@ -95,7 +95,7 @@ describe('DELETE Tasks',() => {
         const data = await response.json()
         expect(response.status).to.equal(200)
         expect(data).to.be.an('object')
-        expect(data).to.include.all.keys('id')
+        expect(data).to.include.all.keys('error')
     })
 
     it ('should not delete a task with SQL injection', async() => {

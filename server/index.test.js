@@ -144,7 +144,6 @@ describe('POST register',() => {
         expect(response.status).to.equal(201,data.error)
         expect(data).to.be.an('object')
         expect(data).to.include.all.keys(/*'error'*/'id','email')
-        expect(data.error).to.equal('Invalid password for user');
     })
 })
 

@@ -48,9 +48,9 @@ function Home() {
 
   return (
     <div id="container">
-      <h3>Todos</h3>
-      <form>
-        <input 
+      <h3 className='title'>Todos</h3>
+      <form >
+        <input className='nav-bar'
           placeholder='Add new task'
           value={task}
           onChange={e => setTask(e.target.value)}

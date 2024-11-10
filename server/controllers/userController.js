@@ -1,7 +1,7 @@
 import { hash, compare } from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { insertUser, selectUserByEmail  } from '../models/User.js'
-import ApiError from '../helpers/ApiError.js'
+import { ApiError } from '../helpers/ApiError.js'
 
 const { sign } = jwt
 
